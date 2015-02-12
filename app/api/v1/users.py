@@ -11,17 +11,17 @@ class UsersView(BaseView):
         abort(501) #TODO implement
 
     @secure_endpoint()
-    def post(self):
-        abort(501) #TODO implement
+    def post(self, email, password):
+        user = User(email=email, password=password)
+        user.save()
+        return dict(id=user.id)
 
     def get(self, id):
         abort(501) #TODO implement
 
     @secure_endpoint()
-    def put(self, email, password):
-        user = User(email=email, password=password)
-        user.save()
-        return dict(id=user.id)
+    def put(self, id):
+        abort(501) #TODO implement
 
     @secure_endpoint()
     def delete(self, id):

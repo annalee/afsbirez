@@ -234,7 +234,9 @@ class TestAPICreatingUser:
     def test_user_created(self, testapi):
         data = dict(email="jane.shepard@normandysr2.alliance.mil",
                     password="15omnigel")
-        resp = testapi.put_json('/api/tests/users', data)
+        resp = testapi.post_json('/api/tests/users', data)
         assert "id" in resp.json
         assert resp.status_code == 200
+
+        
 
