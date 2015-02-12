@@ -229,3 +229,12 @@ class TestAPILoggingIn:
         assert resp.json['error'] == 'Invalid JWT'
         assert resp.json['description'] == 'Invalid secret'
 
+class TestAPICreatingUser:
+
+    def test_user_created(self, testapi):
+        data = dict(email="jane.shepard@normandysr2.alliance.mil",
+                    password="15omnigel")
+        resp = testapi.put_json('user', data)
+        assert "id" in resp.json
+        assert resp.status_code == 200
+
